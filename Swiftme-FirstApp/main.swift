@@ -2,10 +2,13 @@
 //  main.swift
 //  Swiftme-FirstApp
 //
-//  Created by Павел Зубрилов on 25.03.2023.
+//  Created by Павел Зубрилов on 26.03.2023.
 //
 
-import Foundation
-
-print("Hello, World!")
+print("Введите value One")
+var valueOne = readLine()
+print("Введите value Two")
+var valueTwo = readLine()
+let result = sum(valueOne, valueTwo)
+print("result = \(result)")
 
