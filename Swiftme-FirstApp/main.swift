@@ -6,9 +6,16 @@
 //
 
 print("Введите value One")
-var valueOne = readLine()
+var valueOne = readLine() 
+checkValue(&valueOne)
+
 print("Введите value Two")
 var valueTwo = readLine()
+checkValue(&valueTwo)
+
+print("Выберите операцию из списка")
+
 let result = sum(valueOne, valueTwo)
 print("result = \(result)")
+
 

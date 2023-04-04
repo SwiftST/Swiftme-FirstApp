@@ -14,3 +14,10 @@ func sum(_ a: String?, _ b: String?) -> String {
     return String(result)
 }
 
+// проверка ввода
+func checkValue(_ value: inout String?) {
+    while Int(value!) == nil {
+        print("Некорректное значение.\nПовторите ввод")
+        value = readLine()
+    }
+}
