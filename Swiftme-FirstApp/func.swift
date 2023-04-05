@@ -54,11 +54,6 @@ func chooseOperation(_ operation: String?) -> (Int, Int) -> Int {
     return addition
 }
 
-func sum(_ a: String?, _ b: String?, _ closure: (Int, Int) -> Int) -> String {
-    let result = closure(Int(a!)!, Int(b!)!)
-    return String(result)
-}
-
 // проверка ввода значения
 func checkValue(_ value: inout String?) {
     while Int(value!) == nil {
