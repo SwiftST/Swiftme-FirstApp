@@ -7,22 +7,7 @@
 
 import Foundation
 
-let addition = { (_ numberOne: Int, _ numberTwo: Int) in
-    numberOne + numberTwo
-}
-
-let subtraction = { (_ numberOne: Int, _ numberTwo: Int) in
-    numberOne - numberTwo
-}
-
-let multiplication = { (_ numberOne: Int, _ numberTwo: Int) in
-    numberOne * numberTwo
-}
-
-let division = { (_ numberOne: Int, _ numberTwo: Int) in
-    numberOne / numberTwo
-}
-
+// возведение в степень (рекурсия)
 let exponentiation = { (_ numberOne: Int, _ numberTwo: Int) in
     guard numberOne > 0, numberTwo > 0 else {
         return 0
@@ -35,25 +20,25 @@ let exponentiation = { (_ numberOne: Int, _ numberTwo: Int) in
     }
     return numberOne * exponentiation(numberOne, numberTwo - 1)
 }
-
-func chooseOperation(_ operation: String?) -> (Int, Int) -> Int {
+// выбор операции, определение результата выражения
+func chooseOperation(_ operation: String?, integers: [Int]) -> Int {
+    var result: Int = 0
     switch operation {
     case "1":
-        return addition
+        result = integers.reduce(0, +)
     case "2":
-        return subtraction
+        result = integers[1...].reduce(integers[0], -)
     case "3":
-        return multiplication
+        result = integers[1...].reduce(result, *)
     case "4":
-        return division
+        result = integers[1...].reduce(result, /)
     case "5":
-        return exponentiation
+        result = exponentiation(integers[0], integers[1])
     default:
         break
     }
-    return addition
+    return result
 }
-
 // проверка ввода значения
 func checkValue(_ value: inout String?) {
     while Int(value!) == nil {
@@ -62,7 +47,6 @@ func checkValue(_ value: inout String?) {
     }
    
 }
-
 // проверка ввода номера функции
 func checkOperation(_ value: inout String?, count: ClosedRange<Int>) {
     for _ in 1... {
