@@ -19,18 +19,14 @@ for i in 1...Int(countArgument!)! {
     arguments += [Int(value!)!]
 }
 
-if arguments.count == 2 {
-    print("Выберите номер операции из списка:\n1. Addition\n2. Subtraction\n3. Multiplication\n4. Divison\n5. Exponentiation")
-    choseNumOperation = readLine()
-    checkOperation(&choseNumOperation, count: 1...5)
-    result = chooseOperation(choseNumOperation, integers: arguments)
-} else {
-    print("Выберите номер операции из списка:\n1. Addition\n2. Subtraction\n3. Multiplication\n4. Divison")
-    choseNumOperation = readLine()
+print("Выберите номер операции из списка:\n1. Addition\n2. Subtraction\n3. Multiplication\n4. Divison\n5. Exponentiation")
+choseNumOperation = readLine()
+checkOperation(&choseNumOperation, count: 1...5)
+if arguments.count > 2 && Int(choseNumOperation!)! == 5 {
+    print("Более 2-х аргументов, невозможно провести операцию возведения в степень")
     checkOperation(&choseNumOperation, count: 1...4)
-    result = chooseOperation(choseNumOperation, integers: arguments)
 }
-        
+result = chooseOperation(choseNumOperation, integers: arguments)
 print("result = \(result)")
 
 
