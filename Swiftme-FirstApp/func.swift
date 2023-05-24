@@ -20,6 +20,7 @@ let exponentiation = { (_ numberOne: Int, _ numberTwo: Int) in
     }
     return numberOne * exponentiation(numberOne, numberTwo - 1)
 }
+
 // выбор операции, определение результата выражения
 func chooseOperation(_ operation: String?, integers: [Int]) -> Int {
     var result: Int = 0
@@ -29,9 +30,9 @@ func chooseOperation(_ operation: String?, integers: [Int]) -> Int {
     case "2":
         result = integers[1...].reduce(integers[0], -)
     case "3":
-        result = integers[1...].reduce(result, *)
+        result = integers[1...].reduce(integers[0], *)
     case "4":
-        result = integers[1...].reduce(result, /)
+        result = integers[1...].reduce(integers[0], /)
     case "5":
         result = exponentiation(integers[0], integers[1])
     default:
@@ -39,23 +40,19 @@ func chooseOperation(_ operation: String?, integers: [Int]) -> Int {
     }
     return result
 }
+
 // проверка ввода значения
 func checkValue(_ value: inout String?) {
     while Int(value!) == nil {
         print("Некорректное значение.\nПовторите ввод")
         value = readLine()
     }
-   
 }
+
 // проверка ввода номера функции
 func checkOperation(_ value: inout String?, count: ClosedRange<Int>) {
-    for _ in 1... {
-        guard Int(value ?? "0") != nil else {
-            print("Некорректное значение.\nПовторите ввод")
-            value = readLine()
-            continue
-        }
-        guard count ~= Int(value!)! else {
+    while true {
+        guard (Int(value ?? "0") != nil) && count ~= Int(value!)! else {
             print("Некорректное значение.\nПовторите ввод")
             value = readLine()
             continue
